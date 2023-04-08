@@ -1,13 +1,13 @@
 const jokeContainer = document.getElementById("joke");
-const btn = document.getElementById("btn");
-const url = "https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,political,racist,sexist,explicit&type=single";
+const button = document.getElementById("button");
+//Joke API link
+const url = "https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,religious,political,racist,sexist,explicit&type=single";
 
-let getJoke = () => {
-    fetch(url)
-    .then(data => data.json())
-    .then(item =>{
-        jokeContainer.textContent = `${item.joke}`;
-    });
-}
-btn.addEventListener("click",getJoke);
+    const getJoke = async () => {
+    const response = await fetch(url);
+    const data = await response.json();
+    jokeContainer.textContent = data.joke;
+  }
+
+button.addEventListener("click",getJoke);
 getJoke();
